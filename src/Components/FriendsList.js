@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const FriendsList = () => {
+const FriendsList = (props) => {
     return (
         <div>
-        <li>List</li>
-    </div>
+          <ul>
+            <li>{props.name}</li>
+            <li>{props.age}</li>
+            <li>{props.email}</li>
+          </ul>
+       </div>
     )
 }
 

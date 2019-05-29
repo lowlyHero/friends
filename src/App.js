@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-
 import Home from './Components/Home';
 import FriendList from './Components/FriendList';
 import FriendForm from './Components/FriendForm';
@@ -37,13 +36,15 @@ render() {
             <Link to='/friends'>Friends</Link>
           </li>
           <li>
-            <Link to='/FriendForm'>Add New Friend</Link>
+            <Link to='/add-friend'>Add New Friend</Link>
           </li>
         </ul>
       </nav>
       <Route exact path='/' component={Home} />
-      <Route path='/friends' component={FriendList} />
-      <Route path='/FriendForm' component={FriendForm} />
+      <Route exact path='/friends' render={props => (
+        <FriendList {...props} friends={this.state.freinds} />
+      )} />
+      <Route path='/add-friend' component={FriendForm} />
     </div>
   );
  }

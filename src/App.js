@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import FriendsList from './Components/FriendsList';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+
+import Home from './Components/Home';
+import FriendList from './Components/FriendList';
 import FriendForm from './Components/FriendForm';
+
 import axios from 'axios';
 
 import './App.css';
@@ -23,11 +28,25 @@ componentDidMount() {
 render() {
   return (
     <div className="App">
-      <h1>My Friends</h1>
-      <FriendsList />
-      <FriendForm />
+      <nav>
+        <ul>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='/friends'>Friends</Link>
+          </li>
+          <li>
+            <Link to='/FriendForm'>Add New Friend</Link>
+          </li>
+        </ul>
+      </nav>
+      <Route exact path='/' component={Home} />
+      <Route path='/friends' component={FriendList} />
+      <Route path='/FriendForm' component={FriendForm} />
     </div>
-  );}
-  }
+  );
+ }
+}
 
 export default App;

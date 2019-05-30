@@ -10,8 +10,8 @@ import axios from 'axios';
 import './App.css';
 
 class App extends Component {
-constructor() {
-  super();
+constructor(props) {
+  super(props);
   this.state = {
     friends: []
   };
@@ -21,7 +21,7 @@ componentDidMount() {
   axios
   .get('http://localhost:5000/friends')
   .then(res => this.setState({ friends: res.data }))
-  .catch(err => window.alert(err))
+  .catch(err => console.log(err))
 }
 
 render() {
@@ -42,7 +42,7 @@ render() {
       </nav>
       <Route exact path='/' component={Home} />
       <Route exact path='/friends' render={props => (
-        <FriendList {...props} friends={this.state.freinds} />
+        <FriendList {...props} friends={this.state.friends} />
       )} />
       <Route path='/add-friend' component={FriendForm} />
     </div>

@@ -10,7 +10,7 @@ class FriendForm extends Component {
     };
 
 changeHandler = e => {
-    
+
 }
 
 handleSubmit = e => {
@@ -19,7 +19,7 @@ handleSubmit = e => {
 
 render() {
     return (
-    <div>
+    <div className='form-wrapper'>
     <form onSubmit={this.handleSubmit}>
         <input 
             type='text'     
@@ -29,16 +29,16 @@ render() {
             onChange={this.changeHandler}
         />
         <input  
-            type='text'     
-            name='name'
-            placeholder='Name...'
+            type='number'     
+            name='age'
+            placeholder='Age...'
             value={this.state.friend.age}
             onChange={this.changeHandler}
         />
         <input  
-            type='text'     
-            name='name'
-            placeholder='Name...'
+            type='email'     
+            name='email'
+            placeholder='Email...'
             value={this.state.friend.email}
             onChange={this.changeHandler}
         />

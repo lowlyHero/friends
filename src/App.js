@@ -21,7 +21,20 @@ componentDidMount() {
   axios
   .get('http://localhost:5000/friends')
   .then(res => this.setState({ friends: res.data }))
-  .catch(err => console.log(err))
+  .catch(err => console.log(err));
+}
+
+addFriend = (e, friend) => {
+  e.preventDefault();
+  axios
+  .post('http://localhost/friends', friend)
+  .then(res => {
+    this.setState({
+      friends: res.data
+    });
+    this.props.history.push('/friend-list');
+  })
+  .catch(err => console.log(err));
 }
 
 render() {

@@ -2,23 +2,30 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const FriendList = (props) => {
+ function routeToFriend(ev, friend) {
+    ev.preventDefault();
+    props.history.push(`/friend-list/${friend.id}`);
+  }
     return (
         <div className='friend-list-wrapper'>
-          {props.friends.map(f => (
-            <div className='friend-card' key={f.id}>
+          {props.friends.map(friend => (
+            <div
+              onClick={ev => routeToFriend(ev, friend)} 
+              className='friend-card' 
+              key={friend.id}>
               <h2>
-                <Link to={`/friends/${f.id}`}>
+                <Link to={`/friends/${friend.id}`}>
                 <ul>
-                <li>{f.name}</li>
-                <li>{f.age}</li>
-                <li>{f.email}</li>
+                <li>{friend.name}</li>
+                <li>{friend.age}</li>
+                <li>{friend.email}</li>
                 </ul>
                 </Link>
               </h2>
             </div>
           ))}
        </div>
-    )
+    );
 }
 
 export default FriendList

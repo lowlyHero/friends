@@ -9,17 +9,49 @@ class FriendForm extends Component {
         }
     };
 
-changeHandler = e => {
+    componentDidUpdate(prevProps) {
+        if (
+          this.props.activeItem &&
+          prevProps.activeItem !== this.props.activeItem
+        ) {
+          this.setState({
+            friend: this.props.activeItem
+          });
+        }
+      }
 
-}
+      changeHandler = ev => {
+        ev.persist();
+        let value = ev.target.value;
+    
+        this.setState(prevState => ({
+          friend: {
+            ...prevState.friend,
+            [ev.target.name]: value
+          }
+        }));
+      };
 
 handleSubmit = e => {
+    if (this.props.activeItem) {
+      this.props.updateItem(e, this.state.friend);
+    } else {
+      this.props.addFriend(e, this.state.friend);
+    }
+    this.setState({
+      friend: {
+        name: '',
+        age: '',
+        email: ''
+      }
+    });
+  };
 
-}
 
 render() {
     return (
     <div className='form-wrapper'>
+        <h2>Add a Friend</h2>
     <form onSubmit={this.handleSubmit}>
         <input 
             type='text'     

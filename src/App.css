@@ -2,8 +2,21 @@
   text-align: center;
 }
 
+nav {
+  display: flex;
+  flex-direction: row-reverse;
+  text-decoration: none;
+}
+
 a {
   text-decoration: none;
+}
+
+.form-wrapper {
+  border: 1px solid #999;
+  padding: 25px;
+  margin: 0 auto;
+  width: 400px;
 }
 
 form {
@@ -29,5 +42,7 @@ li {
 
 .friend-card {
   border: 1px outset #999;
-  margin: 5px;
+  margin: 5px auto;
+  width: 400px;
 }
+

@@ -43,7 +43,8 @@ render() {
       <Route exact path='/' component={Home} />
       <Route exact path='/friends' render={props => (
         <FriendList {...props} friends={this.state.friends} />
-      )} />
+      )} 
+      />
       <Route path='/add-friend' component={FriendForm} />
     </div>
   );
